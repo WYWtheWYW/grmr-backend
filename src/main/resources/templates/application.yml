@@ -1,0 +1,14 @@
+spring:
+  datasource:
+    driver-class-name: org.mariadb.jdbc.Driver
+    url: jdbc:mariadb://${MARIADB_HOST}/${DB_NAME}
+    username: ${MARIADB_USERNAME}
+    password: ${MARIADB_PASSWORD}
+  jpa:
+    open-in-view: false
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        format_sql: ture
+    defer-datasource-initialization: true
