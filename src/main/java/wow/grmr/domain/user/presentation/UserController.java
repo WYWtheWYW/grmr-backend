@@ -30,20 +30,17 @@ public class UserController {
     }
 
 
-
     @GetMapping("/test")
     public void test(HttpSession session) {
 
         LoginResponse user = (LoginResponse) session.getAttribute("user");
         System.out.println("user.getLoginId() = " + user.getLoginId());
         System.out.println("user.id = " + user.getId());
-
     }
 
     @GetMapping("/logout")
     public void logout( HttpSession session) {
         session.invalidate();
     }
-
 
  }
