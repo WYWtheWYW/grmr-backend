@@ -1,4 +1,4 @@
-package wow.grmr.domain.participation.domain;
+package wow.grmr.domain.destination.domain;
 
 import jakarta.persistence.*;
 import lombok.Builder;

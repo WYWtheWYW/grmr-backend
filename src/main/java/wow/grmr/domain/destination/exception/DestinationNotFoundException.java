@@ -1,4 +1,4 @@
-package wow.grmr.domain.participation.exception;
+package wow.grmr.domain.destination.exception;
 
 import wow.grmr.global.error.exception.ErrorCode;
 import wow.grmr.global.error.exception.GRMRException;

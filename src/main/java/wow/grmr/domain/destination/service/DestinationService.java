@@ -1,13 +1,10 @@
-package wow.grmr.domain.participation.service;
+package wow.grmr.domain.destination.service;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import wow.grmr.domain.participation.domain.repository.DestinationRepository;
-
-import java.util.List;
-import java.util.Optional;
+import wow.grmr.domain.destination.domain.repository.DestinationRepository;
 
 @Slf4j
 @Service

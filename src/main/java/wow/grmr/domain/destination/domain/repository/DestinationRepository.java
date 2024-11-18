@@ -1,12 +1,9 @@
-package wow.grmr.domain.participation.domain.repository;
+package wow.grmr.domain.destination.domain.repository;
 
 
 
 import org.springframework.data.jpa.repository.JpaRepository;
-import wow.grmr.domain.participation.domain.Destination;
-
-import java.util.List;
-import java.util.Optional;
+import wow.grmr.domain.destination.domain.Destination;
 
 public interface DestinationRepository extends JpaRepository<Destination, Long> {
 

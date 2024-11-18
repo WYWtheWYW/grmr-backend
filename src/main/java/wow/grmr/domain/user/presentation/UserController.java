@@ -18,20 +18,32 @@ public class UserController {
 
     private final UserService userService;
 
-    @PostMapping("/user/login")
+    @GetMapping("/login")
     public void login(@RequestBody LoginRequest loginRequest, HttpSession session) {
         LoginResponse loginResponse = userService.authenticateUser(loginRequest);
         session.setAttribute("user", loginResponse);
     }
 
-    @PostMapping("/user/register")
+    @PostMapping("/register")
     public void signUp(@RequestBody RegisterRequest registerRequest) {
         userService.register(registerRequest);
     }
 
 
-    @PostMapping("/logout")
-    public void logout() {
+
+    @GetMapping("/test")
+    public void test(HttpSession session) {
+
+        LoginResponse user = (LoginResponse) session.getAttribute("user");
+        System.out.println("user.getLoginId() = " + user.getLoginId());
+        System.out.println("user.id = " + user.getId());
+
     }
+
+    @GetMapping("/logout")
+    public void logout( HttpSession session) {
+        session.invalidate();
+    }
+
 
  }

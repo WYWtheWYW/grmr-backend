@@ -37,6 +37,7 @@ public class UserService {
                         .nickname(registerRequest.getNickname())
                         .favoriteFood(registerRequest.getFavoriteFood())
                         .password(registerRequest.getPassword())
+                        .hatePerson(registerRequest.getHatePerson())
                         .build();
         userRepository.save(user);
 

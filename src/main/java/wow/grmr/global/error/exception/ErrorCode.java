@@ -14,7 +14,7 @@ public enum ErrorCode {
     MISMATCH_USER_OAUTH_ID(400, "유저의  OAuth ID값이 토큰 ID 값과 일치하지 않습니다"),
 
     /* 401 UNAUTHORIZED : 인증되지 않은 사용자 */
-    INVALID_TOKEN(401, "토큰이 유효하지 않습니다."),
+    ESSENTIAL_CERTIFICATION(401, "인증이 필요합니다"),
     EXPIRED_TOKEN(401, "토큰이 만료되었습니다."),
 
     /* 403 UNAUTHORIZED : 인증되지 않은 사용자 */

@@ -4,7 +4,7 @@ import jakarta.persistence.*;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import wow.grmr.domain.participation.domain.Destination;
+import wow.grmr.domain.destination.domain.Destination;
 import wow.grmr.domain.user.domain.User;
 import wow.grmr.global.database.BaseEntity;
 
