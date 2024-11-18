@@ -24,6 +24,7 @@ public class UserController {
         session.setAttribute("user", loginResponse);
     }
 
+
     @PostMapping("/register")
     public void signUp(@RequestBody RegisterRequest registerRequest) {
         userService.register(registerRequest);
@@ -32,7 +33,6 @@ public class UserController {
 
     @GetMapping("/test")
     public void test(HttpSession session) {
-
         LoginResponse user = (LoginResponse) session.getAttribute("user");
         System.out.println("user.getLoginId() = " + user.getLoginId());
         System.out.println("user.id = " + user.getId());

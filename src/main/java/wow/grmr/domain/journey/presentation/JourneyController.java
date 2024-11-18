@@ -1,23 +1,38 @@
 package wow.grmr.domain.journey.presentation;
 
 
+import jakarta.servlet.http.HttpSession;
 import lombok.RequiredArgsConstructor;
 
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Slice;
 import org.springframework.data.domain.Sort;
 import org.springframework.web.bind.annotation.*;
+import wow.grmr.domain.attraction.domain.Attraction;
+import wow.grmr.domain.journey.domain.Journey;
 import wow.grmr.domain.journey.service.JourneyService;
+import wow.grmr.domain.user.domain.User;
 
 import java.util.List;
 
 
 @RestController
-@RequestMapping("/api/v1/reservation")
+@RequestMapping("/api/v1/journey")
 @RequiredArgsConstructor
 public class JourneyController {
 
     private final JourneyService journeyService;
+
+    // 여정을 생성하는 것
+
+    @PostMapping("/")
+    public void createJourney(HttpSession session, List<Attraction> attractionList) {
+        User user = (User) session.getAttribute("user");
+        journeyService.createJourney(user, attractionList);
+    }
+
+
+
 
 //    @Operation(summary = "방 생성")
 //    @PostMapping("/create")

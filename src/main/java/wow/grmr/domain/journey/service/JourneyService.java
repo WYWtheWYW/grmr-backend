@@ -9,7 +9,12 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Slice;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import wow.grmr.domain.attraction.domain.Attraction;
+import wow.grmr.domain.attraction.domain.repository.AttractionRepository;
 import wow.grmr.domain.journey.domain.repository.JourneyRepository;
+import wow.grmr.domain.user.domain.User;
+
+import java.util.List;
 
 
 @Service
@@ -19,8 +24,10 @@ import wow.grmr.domain.journey.domain.repository.JourneyRepository;
 public class JourneyService {
 
     private final JourneyRepository journeyRepository;
-    //private final UserUtils userUtils;
+    private final AttractionRepository attractionRepository;
 
-
+    public void createJourney(User user, List<Attraction> attractionList) {
+        attractionRepository.saveAll(attractionList);
+    }
 
 }

@@ -29,17 +29,23 @@ public class Destination extends BaseEntity {
     @JoinColumn(name = "journey_id")
     private Journey journey;
 
+    private Integer attractionId;
+
     @Builder
-    public Destination(User user, Journey journey) {
+    public Destination(User user, Journey journey, Integer attractionId) {
         this.user = user;
         this.journey = journey;
+        this.attractionId = attractionId;
         journey.getDestinations().add(this);
     }
 
-    public static Destination createParticipation(User user, Journey journey) {
+
+    public static Destination createDestination(User user, Journey journey, Integer attractionId) {
         return builder()
                 .user(user)
                 .journey(journey)
+                .attractionId(attractionId)
                 .build();
     }
+
 }

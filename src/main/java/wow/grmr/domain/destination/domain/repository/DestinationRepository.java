@@ -20,5 +20,4 @@ public interface DestinationRepository extends JpaRepository<Destination, Long> 
 
 
 
-
 }
