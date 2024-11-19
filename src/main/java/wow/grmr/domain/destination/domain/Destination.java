@@ -36,7 +36,7 @@ public class Destination extends BaseEntity {
         this.user = user;
         this.journey = journey;
         this.attractionId = attractionId;
-        journey.getDestinations().add(this);
+        //journey.getDestinations().add(this);
     }
 
 

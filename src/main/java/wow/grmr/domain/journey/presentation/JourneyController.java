@@ -9,9 +9,14 @@ import org.springframework.data.domain.Slice;
 import org.springframework.data.domain.Sort;
 import org.springframework.web.bind.annotation.*;
 import wow.grmr.domain.attraction.domain.Attraction;
+import wow.grmr.domain.attraction.service.AttractionService;
 import wow.grmr.domain.journey.domain.Journey;
+import wow.grmr.domain.journey.presentation.dto.request.CreateJourneyRequest;
+import wow.grmr.domain.journey.presentation.dto.response.MyJourneyResponse;
 import wow.grmr.domain.journey.service.JourneyService;
 import wow.grmr.domain.user.domain.User;
+import wow.grmr.domain.user.presentation.dto.response.LoginResponse;
+import wow.grmr.domain.user.service.UserService;
 
 import java.util.List;
 
@@ -22,15 +27,25 @@ import java.util.List;
 public class JourneyController {
 
     private final JourneyService journeyService;
+    private final AttractionService attractionService;
+
 
     // 여정을 생성하는 것
 
-    @PostMapping("/")
-    public void createJourney(HttpSession session, List<Attraction> attractionList) {
-        User user = (User) session.getAttribute("user");
-        journeyService.createJourney(user, attractionList);
+
+    // 그대로 줘
+    @PostMapping("/create")
+    public void createJourney(@RequestBody CreateJourneyRequest journeyRequest, HttpSession session) {
+
+        LoginResponse user = (LoginResponse)session.getAttribute("user");
+        journeyService.createJourney(user, journeyRequest);
     }
 
+    @GetMapping("/my")
+    public List<MyJourneyResponse> getJourney(HttpSession session) {
+        LoginResponse loginUser = (LoginResponse)session.getAttribute("user");
+        return journeyService.getMyJourney(loginUser);
+    }
 
 
 
@@ -88,12 +103,8 @@ public class JourneyController {
 //        return reservationService.reservedByMe();
 //    }
 //
-//    @Operation(summary = "참여한 방 조회")
-//    @GetMapping("/my/participation")
-//    public List<ReservationBriefInfoDto> getParticipated() {
-//
-//        return reservationService.participatedReservation();
-//    }
+
+
 //
 //    @Operation(summary = "검색")
 //    @GetMapping("/search")

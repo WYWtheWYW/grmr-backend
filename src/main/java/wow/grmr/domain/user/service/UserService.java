@@ -43,5 +43,10 @@ public class UserService {
 
     }
 
+    public User findUser(LoginResponse loginResponse) {
+        return userRepository.findById(loginResponse.getId())
+                .orElseThrow(() -> UserNotFoundException.EXCEPTION);
+    }
+
 
 }
