@@ -20,6 +20,7 @@ import wow.grmr.domain.user.domain.User;
 import wow.grmr.domain.user.presentation.dto.response.LoginResponse;
 import wow.grmr.domain.user.service.UserService;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -44,12 +45,11 @@ public class JourneyService {
         Journey journey = Journey.builder()
                 .user(user)
                 .title(createJourneyRequest.getTitle())
+                .destinations(new ArrayList<>())
                 .build();
 
         journeyRepository.save(journey);
-
         System.out.println("journey.getUser().getPassword() = " + journey.getUser().getPassword());
-
         destinationUtil.createDestination(journey, createJourneyRequest);
     }
 

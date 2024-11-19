@@ -24,18 +24,21 @@ public class UserController {
         session.setAttribute("user", loginResponse);
     }
 
-
     @PostMapping("/register")
     public void signUp(@RequestBody RegisterRequest registerRequest) {
         userService.register(registerRequest);
     }
 
+    @DeleteMapping("/delete")
+    public void delete(HttpSession session) {
+        LoginResponse loginResponse = (LoginResponse)session.getAttribute("user");
+        userService.delete(loginResponse);
+    }
 
-    @GetMapping("/test")
-    public void test(HttpSession session) {
-        LoginResponse user = (LoginResponse) session.getAttribute("user");
-        System.out.println("user.getLoginId() = " + user.getLoginId());
-        System.out.println("user.id = " + user.getId());
+    @PatchMapping("/update")
+    public void update(HttpSession session) {
+        LoginResponse loginResponse = (LoginResponse)session.getAttribute("user");
+        userService.update(loginResponse);
     }
 
     @GetMapping("/logout")

@@ -38,4 +38,14 @@ public class DestinationService implements DestinationUtil{
         }
 
     }
+
+    @Override
+    public List<Integer> getDestination(Long journeyId) {
+        List<Destination> destinations = destinationRepository.findAllByJourneyId(journeyId);
+
+        return destinations.stream()
+                .map(Destination::getAttractionId)
+                .toList();
+
+    }
 }

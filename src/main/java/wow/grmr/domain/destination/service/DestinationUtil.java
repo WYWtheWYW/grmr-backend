@@ -14,5 +14,6 @@ import java.util.List;
 
 public interface DestinationUtil {
     void createDestination(Journey journey, CreateJourneyRequest createJourneyRequest);
+    List<Integer> getDestination(Long journeyId);
 
 }

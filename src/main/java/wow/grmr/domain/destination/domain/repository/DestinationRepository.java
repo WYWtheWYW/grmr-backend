@@ -5,6 +5,8 @@ package wow.grmr.domain.destination.domain.repository;
 import org.springframework.data.jpa.repository.JpaRepository;
 import wow.grmr.domain.destination.domain.Destination;
 
+import java.util.List;
+
 public interface DestinationRepository extends JpaRepository<Destination, Long> {
 
 //    Participation findByUserAndReservation(User user, Reservation reservation);
@@ -17,6 +19,10 @@ public interface DestinationRepository extends JpaRepository<Destination, Long> 
 //    Optional<Participation> findByReservationAndUser(Reservation reservation, User user);
 //
 //    List<Participation> findByUserId(Long userId);
+
+
+        List<Destination> findAllByJourneyId(Long journeyId);
+
 
 
 

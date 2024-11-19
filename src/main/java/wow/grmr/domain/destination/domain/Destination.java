@@ -33,14 +33,17 @@ public class Destination extends BaseEntity {
 
     @Builder
     public Destination(User user, Journey journey, Integer attractionId) {
+        System.out.println("=== 빌더 == ");
+
+        journey.getDestinations().add(this);
         this.user = user;
         this.journey = journey;
         this.attractionId = attractionId;
-        //journey.getDestinations().add(this);
+
     }
 
-
     public static Destination createDestination(User user, Journey journey, Integer attractionId) {
+
         return builder()
                 .user(user)
                 .journey(journey)

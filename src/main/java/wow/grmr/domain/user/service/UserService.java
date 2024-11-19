@@ -40,7 +40,20 @@ public class UserService {
                         .hatePerson(registerRequest.getHatePerson())
                         .build();
         userRepository.save(user);
+    }
 
+    @Transactional
+    public void delete(LoginResponse loginResponse) {
+
+        User user = findUser(loginResponse);
+        userRepository.delete(user);
+    }
+
+    @Transactional
+    public void update(LoginResponse loginResponse) {
+
+        User user = findUser(loginResponse);
+        userRepository.delete(user);
     }
 
     public User findUser(LoginResponse loginResponse) {
