@@ -31,6 +31,7 @@ public class Journey extends BaseEntity {
     @OneToMany(mappedBy = "journey",cascade = CascadeType.ALL)
     private List<Destination> destinations = new ArrayList<>();
 
+
     private String title;
 
     @Builder
@@ -40,19 +41,5 @@ public class Journey extends BaseEntity {
         this.destinations = destinations;
         this.title = title;
     }
-
-//
-//    public void validUserIsHost(Long id) {
-//        if (!checkUserIsHost(id)) {
-//            throw NotHostException.EXCEPTION;
-//        }
-//    }
-
-
-    public Boolean checkUserIsHost(Long id) {
-        return user.getId().equals(id);
-    }
-
-
 
 }

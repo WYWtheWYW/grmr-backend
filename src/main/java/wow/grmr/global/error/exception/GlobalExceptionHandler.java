@@ -27,7 +27,6 @@ import java.util.stream.Collectors;
 import static wow.grmr.global.error.exception.ErrorCode.METHOD_NOT_ALLOWED;
 import static wow.grmr.global.error.exception.ErrorCode.URL_INPUT_ERROR;
 
-
 @RestControllerAdvice
 @Slf4j
 public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
@@ -46,8 +45,7 @@ public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
     }
 
     @ExceptionHandler(Exception.class)
-    protected ResponseEntity<ErrorResponse> handleException(Exception e, HttpServletRequest request)
-            throws IOException {
+    protected ResponseEntity<ErrorResponse> handleException(Exception e, HttpServletRequest request) {
 
         StringBuffer requestURL = request.getRequestURL();
         String queryString = request.getQueryString();

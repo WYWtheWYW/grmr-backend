@@ -46,6 +46,5 @@ public class DestinationService implements DestinationUtil{
         return destinations.stream()
                 .map(Destination::getAttractionId)
                 .toList();
-
     }
 }

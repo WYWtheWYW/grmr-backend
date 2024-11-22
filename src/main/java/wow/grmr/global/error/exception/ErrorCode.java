@@ -38,6 +38,7 @@ public enum ErrorCode {
 
     /* 500 */
     INTERNAL_SERVER_ERROR(500,"서버 에러"),
+    INTERNAL_GPT_ERROR(500,"GPT 에러입니다"),
     PAGE_ACCESS_LOTTERY_ERROR(500, "복권 사이트 페이지에 접속할 수 없습니다. URL 또는 네트워크 상태를 확인해 주세요"),
     CRAWLING_EXCEPTION(500, "크롤링중 입출력 작업 중 에러 발생"),
     DATA_NOT_FOUND(500, "크롤링으로 가져온 데이터가 Null 입니다"),

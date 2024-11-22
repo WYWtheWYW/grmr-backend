@@ -53,24 +53,11 @@ public class JourneyService {
         destinationUtil.createDestination(journey, createJourneyRequest);
     }
 
-//    public void getJourneys(LoginResponse loginUser) {
-//
-//        User user = userService.findUser(loginUser);
-//
-//        List<Journey> journeys = journeyRepository.findJourneys(user.getId());
-//
-//        System.out.println("journey.getUser().getPassword() = " + journey.getUser().getPassword());
-//
-//        destinationUtil.createDestination(journey, createJourneyRequest);
-//    }
-
     @Transactional
-    public List<MyJourneyResponse> getMyJourney(LoginResponse loginUser) {
-
+    public Slice<MyJourneyResponse> getMyJourney(LoginResponse loginUser,PageRequest pageRequest) {
         User user = userService.findUser(loginUser);
-        List<Journey> journeys = journeyRepository.findByUserId(user.getId());
-        return  journeys.stream()
-                        .map(reservation -> new MyJourneyResponse(reservation.getId(),reservation.getTitle())).collect(Collectors.toList());
+        Slice<Journey> journeys = journeyRepository.findSliceByUserIdOrderByCreatedDateDesc(user.getId(),pageRequest);
+        return journeys.map(journey -> new MyJourneyResponse(journey.getId(),journey.getTitle()));
     }
 
 

@@ -1,9 +1,9 @@
 spring:
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://localhost:3306/grmr?&serverTimezone=Asia/Seoul
-    username: ssafy
-    password: ssafy
+    url: jdbc:mysql://${MYSQL_HOST}:${MYSQL_PORT}/${DB_NAME}?&serverTimezone=Asia/Seoul
+    username: ${MYSQL_USERNAME}
+    password: ${MYSQL_PASSWORD}
 
   jpa:
     open-in-view: false
@@ -14,3 +14,6 @@ spring:
         format_sql: ture
     defer-datasource-initialization: true
 
+openai:
+  api:
+    key: ${GPT_KEY}

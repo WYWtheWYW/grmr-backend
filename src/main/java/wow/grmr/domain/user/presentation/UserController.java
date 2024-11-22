@@ -24,6 +24,11 @@ public class UserController {
         session.setAttribute("user", loginResponse);
     }
 
+//    @GetMapping("/check/longinId")
+//    public void checkLoginId(@RequestParam("longinId") String longinId) {
+//
+//    }
+
     @PostMapping("/register")
     public void signUp(@RequestBody RegisterRequest registerRequest) {
         userService.register(registerRequest);

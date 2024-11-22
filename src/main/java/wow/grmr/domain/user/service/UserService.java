@@ -38,6 +38,7 @@ public class UserService {
                         .favoriteFood(registerRequest.getFavoriteFood())
                         .password(registerRequest.getPassword())
                         .hatePerson(registerRequest.getHatePerson())
+                        .birthday(registerRequest.getBirthday())
                         .build();
         userRepository.save(user);
     }

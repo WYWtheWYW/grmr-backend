@@ -10,9 +10,4 @@ import wow.grmr.domain.destination.service.DestinationService;
 public class DestinatiopnController {
 
     private final DestinationService destinationService;
-
-//    @GetMapping("/journey/{journeyId}")
-//    public ParticipationListResponse getParticipationList(@PathVariable("reservationId") Long reservationId) {
-//        return participationService.getParticipationList(reservationId);
-//    }
 }

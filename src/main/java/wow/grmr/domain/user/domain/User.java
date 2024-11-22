@@ -4,8 +4,14 @@ import jakarta.persistence.*;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import wow.grmr.domain.destination.domain.Destination;
+import wow.grmr.domain.journey.domain.Journey;
 import wow.grmr.global.database.BaseEntity;
 
+
+import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 
 import static jakarta.persistence.GenerationType.IDENTITY;
 import static lombok.AccessLevel.PROTECTED;
@@ -23,21 +29,19 @@ public class User extends BaseEntity {
     private String password;
     private String favoriteFood;
     private String hatePerson;
+    private LocalDate birthday;
+
+    @OneToMany(mappedBy = "user",cascade = CascadeType.ALL)
+    private List<Journey> journeyList = new ArrayList<>();
 
     @Builder
-    public User(Long id, String nickname, String loginId, String password, String favoriteFood, String hatePerson) {
+    public User(Long id, String nickname, String loginId, String password, String favoriteFood, String hatePerson, LocalDate birthday) {
         this.id = id;
         this.nickname = nickname;
         this.loginId = loginId;
         this.password = password;
         this.favoriteFood = favoriteFood;
         this.hatePerson = hatePerson;
+        this.birthday = birthday;
     }
-
-    public static User of(Long userId) {
-        return User.builder().id(userId).build();
-    }
-
-
-
 }

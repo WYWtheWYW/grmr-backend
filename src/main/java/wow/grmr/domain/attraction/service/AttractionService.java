@@ -8,7 +8,10 @@ import wow.grmr.domain.attraction.domain.repository.AttractionRepository;
 import wow.grmr.domain.attraction.presentation.dto.response.AttractionDto;
 import wow.grmr.domain.destination.service.DestinationUtil;
 import wow.grmr.domain.journey.presentation.dto.response.MyJourneyResponse;
+import wow.grmr.domain.user.domain.User;
 import wow.grmr.domain.user.presentation.dto.response.LoginResponse;
+import wow.grmr.domain.user.service.UserService;
+import wow.grmr.global.common.Area;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -19,13 +22,18 @@ import java.util.stream.Collectors;
 public class AttractionService implements AttractionUtils {
 
     private final AttractionRepository attractionRepository;
+    private final UserService userService;
     private final DestinationUtil destinationUtil;
 
     @Override
-    public List<AttractionDto> getRandomAttractions(Integer areaCode) {
-        List<Attraction> attraction = attractionRepository.findRandomAttractionByAreaCode(areaCode);
+    public List<AttractionDto> getRandomAttractions(Area areaCode ,LoginResponse loginResponse) {
+
+        User user = userService.findUser(loginResponse);
+
+        List<Attraction> attraction = attractionRepository.findRandomAttractionByAreaCode(areaCode.getCode());
 
         return attraction.stream().map(att -> new AttractionDto(
+                user.getNickname(),
                 att.getNo(),
                 att.getTitle(),
                 att.getContentTypeId(),
@@ -36,36 +44,13 @@ public class AttractionService implements AttractionUtils {
                 att.getAddr1())).collect(Collectors.toList());
     }
 
-    public List<AttractionDto> getAttractionList(Long journeyId) {
+    public List<AttractionDto> getAttractionList(LoginResponse loginResponse, Long journeyId) {
 
-        List<Integer> attractionId = destinationUtil.getDestination(journeyId);
-
-        for (Integer i : attractionId) {
-            System.out.println("i = " + i);
-        }
-
-        System.out.println(attractionId.size());
-        List<Attraction> attraction = attractionRepository.findByNoIn(attractionId);
-
-        System.out.println("attraction = " + attraction.size());
-
-        return attraction.stream().map(att -> new AttractionDto(
-                att.getNo(),
-                att.getTitle(),
-                att.getContentTypeId(),
-                att.getAreaCode(),
-                att.getFirstImage1(),
-                att.getLatitude(),
-                att.getLongitude(),
-                att.getAddr1())).collect(Collectors.toList());
-    }
-
-    public List<AttractionDto> getAttractionList2(LoginResponse loginResponse, Long journeyId) {
-
-
+        User user = userService.findUser(loginResponse);
         List<Attraction> attraction = attractionRepository.findAttractionsByJourneyId(journeyId,loginResponse.getId());
 
         return attraction.stream().map(att -> new AttractionDto(
+                user.getNickname(), 
                 att.getNo(),
                 att.getTitle(),
                 att.getContentTypeId(),

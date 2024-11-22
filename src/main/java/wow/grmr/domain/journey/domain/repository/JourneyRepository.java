@@ -1,6 +1,8 @@
 package wow.grmr.domain.journey.domain.repository;
 
 
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Slice;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
@@ -25,9 +27,7 @@ public interface JourneyRepository extends JpaRepository<Journey, Long> {
     List<Journey> findJourneys(@Param("userId") Long userId);
 
     List<Journey> findByUserId(Long userId);
-//
-//    @Query("select distinct r from Journey r"+
-//            " where r.user.id = :userId order by r.lastModifyDate desc")
-//    List<Reservation> findReservedByMe(@Param("userId") Long userId);
+
+    Slice<Journey> findSliceByUserIdOrderByCreatedDateDesc(Long userId,Pageable pageable);
 
 }

@@ -12,6 +12,7 @@ import java.util.List;
 @AllArgsConstructor
 public class AttractionDto {
 
+    private String nickname;
     private Integer no;
     private String title;
     private Integer contentTypeId;
