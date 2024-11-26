@@ -8,5 +8,5 @@ import java.util.List;
 
 public interface AttractionUtils {
 
-    List<AttractionDto> getRandomAttractions(Area areaCode, LoginResponse loginResponse);
+    List<AttractionDto> getRandomAttractions(Integer areaCode, LoginResponse loginResponse);
 }

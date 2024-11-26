@@ -23,14 +23,13 @@ public class AttractionService implements AttractionUtils {
 
     private final AttractionRepository attractionRepository;
     private final UserService userService;
-    private final DestinationUtil destinationUtil;
 
     @Override
-    public List<AttractionDto> getRandomAttractions(Area areaCode ,LoginResponse loginResponse) {
+    public List<AttractionDto> getRandomAttractions(Integer areaCode ,LoginResponse loginResponse) {
 
         User user = userService.findUser(loginResponse);
 
-        List<Attraction> attraction = attractionRepository.findRandomAttractionByAreaCode(areaCode.getCode());
+        List<Attraction> attraction = attractionRepository.findRandomAttractionByAreaCode(areaCode);
 
         return attraction.stream().map(att -> new AttractionDto(
                 user.getNickname(),

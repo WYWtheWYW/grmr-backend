@@ -25,7 +25,7 @@ public class AttractionController {
 
     // 지역 코드가 들어 왔을 때 랜덤으로 명소를 주는 api
     @GetMapping("/random/{areaCode}")
-    public List<AttractionDto> randomAttraction(@PathVariable Area areaCode, HttpSession session) {
+    public List<AttractionDto> randomAttraction(@PathVariable Integer areaCode, HttpSession session) {
         LoginResponse loginResponse = (LoginResponse)session.getAttribute("user");
         return attractionService.getRandomAttractions(areaCode,loginResponse);
     }

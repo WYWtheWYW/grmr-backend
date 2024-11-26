@@ -2,23 +2,23 @@ package wow.grmr.global.common;
 
 public enum Area {
 
-    SEOUL(1),
-    INCHEON(2),
-    DAEJEON(3),
-    DAEGU(4),
-    GWANGJU(5),
-    BUSAN(6),
-    ULSAN(7),
-    SEJONG(8),
-    GYEONGGI(31),
-    GANGWON(32),
-    CHUNGBUK(33),
-    CHUNGMAN(34),
-    GYEONGBUK(35),
-    GYEONGNAM(36),
-    JEONBUK(37),
-    JEONNAM(38),
-    JEJU(39);
+    te(1),
+    인천(2),
+    대전(3),
+    대구(4),
+    광주(5),
+    부산(6),
+    울산(7),
+    세종(8),
+    경기(31),
+    강원(32),
+    충북(33),
+    충남(34),
+    경북(35),
+    경남(36),
+    전북(37),
+    전남(38),
+    제주(39);
 
     private final int code;
 
